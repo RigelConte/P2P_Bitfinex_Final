@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+service AuctionService {
+  rpc CreateAuction(AuctionRequest) returns (AuctionResponse);
+  rpc PlaceBid(BidRequest) returns (BidResponse);
+}
+
+message AuctionRequest {
+  string seller = 1;
+  string item = 2;
+  double starting_price = 3;
+}
+
+message AuctionResponse {
+  int32 auction_id = 1;
+}
+
+message BidRequest {
+  int32 auction_id = 1;
+  string bidder = 2;
+  double amount = 3;
+}
+
+message BidResponse {
+  bool success = 1;
+}
